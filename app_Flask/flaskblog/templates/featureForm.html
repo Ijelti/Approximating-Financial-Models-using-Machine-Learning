@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+{% block contentRightBar %}
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/">Logout</a>
+        </div>
+{% endblock contentRightBar %}
+
+{% block content1 %}
+        
+        <div class="content-section">
+            <h3>Instance Prediction: </h3>
+            <br>
+                <h4 style="text-align: center;"> <font color="red">{{result}}</font></h4>
+                <br>
+                <h5>With a probability of <font color="red"> {{proba}}% </font></h5>
+          </div>
+        </div>
+{% endblock content1 %}
+{% block content %}
+    <div class="content-section">
+
+        <form method="POST" action="" >
+             {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Approximating Financial Models using Machine Learning </legend>
+                <br>
+                <table>
+                <tr>
+                <td class= "form-group">
+                    {{ form.alpha.label(class="form-control-label")}}
+                    {% if form.alpha.errors %}
+                        {{ form.alpha(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.alpha.errors%}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.alpha(class="form-control form-control-lg")}}
+                    {% endif %}
+                </td>
+
+                <td class= "form-group" >
+                    {{ form.beta.label(class="form-control-label")}}
+                    {% if form.beta.errors %}
+                        {{ form.beta(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.beta.errors%}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.beta(class="form-control form-control-lg")}}
+                    {% endif %}
+                </td>
+                <td class= "form-group" >
+                    {{ form.F.label(class="form-control-label")}}
+                    {% if form.F.errors %}
+                        {{ form.F(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.F.errors%}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.F(class="form-control form-control-lg")}}
+                    {% endif %}
+                </td>
+                </tr>
+                <tr>
+                <td class= "form-group" >
+                    {{ form.nu.label(class="form-control-label")}}
+                    {% if form.nu.errors %}
+                        {{ form.nu(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.nu.errors%}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.nu(class="form-control form-control-lg")}}
+                    {% endif %}
+                </td>
+                <td class= "form-group" >
+                    {{ form.rho.label(class="form-control-label")}}
+                    {% if form.rho.errors %}
+                        {{ form.rho(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.rho.errors%}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.rho(class="form-control form-control-lg")}}
+                    {% endif %}
+                </td>
+                <td class= "form-group" >
+                    {{ form.T.label(class="form-control-label")}}
+                    {% if form.T.errors %}
+                        {{ form.T(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.T.errors%}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.T(class="form-control form-control-lg")}}
+                    {% endif %}
+                </td>
+                </tr>
+                <tr>
+                <td class= "form-group" >
+                    {{ form.K.label(class="form-control-label")}}
+                    {% if form.K.errors %}
+                        {{ form.K(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.K.errors%}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.K(class="form-control form-control-lg")}}
+                    {% endif %}
+                </td>
+
+                </tr>
+                </table>
+            <fieldset>
+
+            <br>
+            <div class= "form-group">
+                    {{ form.submit1(class="btn btn-outline-info", onclick="check() return false;")}}
+                    {{ form.submit2(class="btn btn-outline-info", onclick="check() return false;")}}
+                    {{ form.submit3(class="btn btn-outline-info", onclick="check() return false;")}}
+            </div>
+            <!-- onclick="document.getElementById('demo').innerHTML = Date() -->
+          
+            
+        </form>
+    <main role="main" class="container">
+        <div class="row justify-content-center">
+          <div class= "col-md-8">
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages%}
+                      {% for category, message in messages %}
+                          <div class="alert alert-{{category}}" >
+                           {{message}}
+                          </div>
+                      {% endfor%}
+                  {% endif %}
+              {% endwith%}
+          </div>
+        </div>
+      </main>
+    <script>
+        function check()
+        {
+            document.writeln(result)
+        }
+    </script>
+{% endblock content %}

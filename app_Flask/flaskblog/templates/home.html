@@ -1,0 +1,52 @@
+  
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+
+<main role="main" class="container" align="center" >
+    <div class="row" align="center">
+
+      <div class="col-md-12" >
+        <div class="content-section"><br>
+        
+          <h3>Approximating Financial Models using Machine Learning</h3><br>
+          <p class='text-muted'>
+              Volatility measures the risk of a security. It is used in option 
+              pricing formula to gauge the fluctuations in the returns of the underlying assets. <br>
+              Volatility indicates the pricing behavior of the security and helps estimate
+              the fluctuations that may happen in a short period of time. <br>
+              
+
+              <br><br>
+            <ul class="list-group">
+              
+              <li class="list-group-item list-group-item-light" > 
+                <h4> Polynomial Regression </h4>
+              </li>
+
+              <li class="list-group-item list-group-item-light">
+                <h4>Random Forest</h4>
+                <p></p>
+              </li>
+              <li class="list-group-item list-group-item-light">
+                  <h4>Neural Network</h4>
+                  <p></p>
+                </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  {% endblock content %}
